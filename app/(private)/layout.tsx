@@ -8,15 +8,23 @@ export default async function Layout({
 }) {
   const headersList = headers();
   const IP = headersList.get("x-forwarded-for") as string;
-  const canAccess = IP_CAN_ACCESS.includes(IP);
+  const TESTIP = "103.125.43.174"
+  const canAccess = IP_CAN_ACCESS.includes(TESTIP);
+  console.log(canAccess)
+  console.log(IP)
+  console.log(IP_CAN_ACCESS)
 
   if (!canAccess) {
-     return <>
-     <p>Access Denied your ip is {IP} </p>
-     <ol>
-        {IP_CAN_ACCESS.map((ip) => <li key={ip}>{ip}</li>)}
-     </ol>
-     </>
+    return (
+      <>
+        <p>Access Denied your ip is {IP} </p>
+        <ol>
+          {IP_CAN_ACCESS.map((ip) => (
+            <li key={ip}>{ip}</li>
+          ))}
+        </ol>
+      </>
+    );
   }
   return <>{children}</>;
 }

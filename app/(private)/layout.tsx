@@ -8,8 +8,7 @@ export default async function Layout({
 }) {
   const headersList = headers();
   const IP = headersList.get("x-forwarded-for") as string;
-  const TESTIP = "103.125.43.174"
-  const canAccess = IP_CAN_ACCESS.includes(TESTIP);
+  const canAccess = IP_CAN_ACCESS.includes(IP);
   console.log(canAccess)
   console.log(IP)
   console.log(IP_CAN_ACCESS)
